@@ -1,0 +1,152 @@
+ALESSANDRA MARTÍN ANDRÉS
+INGENIERÍA INFORMÁTICA
+
+SISTEMA DE GESTIÓN PARA CLÍNICA MÉDICA:
+
+Este proyecto implementa un sistema de gestión para una clínica médica utilizando programación orientada a objetos en Python. El sistema incluye funcionalidades para registrar pacientes, médicos, turnos, especialidades y recetas, así como una interfaz de consola (CLI) para la interacción del usuario. También se desarrollaron pruebas unitarias para garantizar el correcto funcionamiento del sistema.
+
+ESTRUCTURA DEL PROYECTO
+
+
+tp_final/
+│
+├── src/
+│   ├── modelos/
+│   │   ├── __init__.py
+|   │   ├── paciente.py
+│   │   ├── medico.py
+│   │   ├── especialidad.py
+│   │   ├── turno.py
+│   │   ├── receta.py
+│   │   ├── historia_clinica.py
+│   │   ├── clinica.py
+│   │   ├── excepciones.py
+│   │
+│   ├── interfaz/
+│   │   ├── __init__.py
+│   │   ├── cli.py
+│
+├── test/
+│   ├── __init__.py
+│   ├── test_paciente.py
+│   ├── test_medico.py
+│   ├── test_turno.py
+│   ├── test_receta.py
+│   ├── test_historia_clinica.py
+│   ├── test_especialidad.py
+│   ├── test_clinica.py
+│
+├── README.md
+
+DESCICRIPCIÓN DE LAS CLASES:
+
+CLASE PACIENTE:
+- Representa a un paciente con nombre, DNI y fecha de nacimiento.
+- Métodos: constructor, método __str__.
+ 
+CLASE MÉDICO:
+- Representa a un médico con nombre, matrícula y especialidades.
+- Métodos: agregar_especialidad, __str__.
+
+CLASE ESPECIALIDAD:
+- Contiene nombre de la especialidad y los días de atención.
+
+CLASE TURNO:
+- Almacena información sobre el turno: paciente, médico, especialidad y fecha/hora.
+
+CLASE RECETA:
+- Almacena una lista de medicamentos prescritos por un médico a un paciente.
+
+CLASE HISTORIA_CLINICA:
+- Guarda listas de turnos y recetas asociados a un paciente.
+
+CLASE CLÍNICA:
+- Administra el sistema completo: pacientes, médicos, turnos y recetas.
+- Atributos privados: __pacientes__, __medicos__, __turnos__, __historias_clinicas__.
+- Métodos:
+  - agregar_paciente(nombre, dni, fecha_nacimiento)
+  - agregar_medico(nombre, matricula, especialidades)
+  - agendar_turno(dni_paciente, matricula_medico, especialidad, fecha_hora)
+  - agregar_especialidad_medico(matricula, especialidad, dias)
+  - emitir_receta(dni_paciente, matricula_medico, medicamentos)
+  - ver_historia_clinica(dni)
+  - ver_todos_los_turnos()
+  - ver_todos_los_pacientes()
+  - ver_todos_los_medicos()
+
+CLASE CLI (INTERFAZ):
+- Método mostrar_menu(): Muestra las opciones al usuario.
+- Método ejecutar(): Inicia el bucle principal de interacción.
+- Operaciones implementadas:
+  - agregar_paciente(): Solicita nombre, DNI, fecha de nacimiento.
+  - agregar_medico(): Solicita nombre, matrícula y especialidades con días.
+  - agendar_turno(): Solicita DNI, matrícula, especialidad y fecha/hora.
+  - agregar_especialidad_medico(): Permite añadir una especialidad a un médico.
+  - emitir_receta(): Solicita medicamentos, DNI del paciente y matrícula del médico.
+  - ver_historia_clinica(): Muestra turnos y recetas de un paciente.
+  - ver_todos_los_turnos(), ver_todos_los_pacientes(), ver_todos_los_medicos(): Listados.
+
+EXCEPCIONES:
+- PacienteNoEncontradoError
+- MedicoNoEncontradoError
+- EspecialidadNoEncontradaError
+- TurnoExistenteError
+
+PRUEBAS UNITARIAS:
+Para cada clase se implementaron entre 5 y 8 tests utilizando el módulo unittest. Las pruebas cubren:
+
+- Casos exitosos de creación y modificación de objetos.
+- Errores esperados al ingresar datos inválidos.
+- Validación de conflictos de turnos.
+- Pruebas de integración básica entre clases.
+
+
+EJECUCIÓN:
+
+EJECUTAR EL PROGRAMA DESDE LA CLI:
+
+Para correr la interfaz de consola (cli.py), ejecutá con el comando:
+
+python3 src/interfaz/cli.py
+
+Esto mostrará el menú interactivo en consola:
+
+--- Menú Clínica ---
+1) Agregar paciente
+2) Agregar médico
+3) Agendar turno
+4) Agregar especialidad a médico
+5) Emitir receta
+6) Ver historia clínica
+7) Ver todos los turnos
+8) Ver todos los pacientes
+9) Ver todos los médicos
+0) Salir
+
+EJECUCIÓN DE LOS TEST
+
+Ejecutar todos los tests:
+Para correr todos los tests de una vez usando unittest, ejecutá:
+
+python3 -m unittest discover -s src/test
+
+Ejecutar un test específico:
+Si querés ejecutar un test individual (por ejemplo, test_clinica.py), hacelo con:
+
+
+python3 src/test/test_clinica.py
+
+También podés usar:
+
+python3 -m unittest src.test.test_clinica
+
+
+RESUMEN DEL TRABAJO REALIZADO
+
+- Se creó una arquitectura modular con separación clara entre lógica de negocio, interfaz y pruebas.
+- Se diseñaron todas las clases según los requerimientos.
+- Se agregaron excepciones personalizadas para control de errores.
+- Se implementaron más de 40 pruebas unitarias con unittest.
+- Se desarrolló una interfaz CLI completamente funcional sin lógica de negocio interna.
+- Se organizaron los archivos con carpetas: modelos, interfaz y test.
+- Se crearon los archivos __init__.py para permitir imports y pruebas correctamente.
